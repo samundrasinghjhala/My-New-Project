@@ -1,5 +1,7 @@
 const { Comment } = require("../models")
 
+
+//old exports type module.export
 exports.index = async (req, res) => {
     try {
         const comments = await Comment.find().populate("user").populate("post");
@@ -39,12 +41,12 @@ exports.update = async (req, res) => {
         if (comment)
             res.send(comment)
         else
-            res.status(404).send({
+            res.status(404).send({      //404 Not found
                 message: `Comment not found by id ${req.params.id}`
             })
     }
     catch (err) {
-        res.status(422).send({
+        res.status(422).send({      //422-unprocessable Entity
             message: "Something went wrong!"
         })
     }

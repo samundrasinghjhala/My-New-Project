@@ -1,12 +1,12 @@
 const { Like } = require("../models")
 
-exports.index = async (req, res) => {
+exports.index = async (req, res) => {      //find all likes
     try {
         const likes = await Like.find().populate("user").populate("post");
         res.send(likes)
     }
     catch (err) {
-        res.status(422).send({
+        res.status(422).send({     //422-unprocessable Entity
             message: "Something went wrong!"
         })
     }
@@ -39,7 +39,7 @@ exports.update = async (req, res) => {
         if (like)
             res.send(like)
         else
-            res.status(404).send({
+            res.status(404).send({      //404 Not found
                 message: `Like not found by id ${req.params.id}`
             })
     }

@@ -21,7 +21,7 @@ exports.show = async (req, res) => {
     if (post)
       res.send(post)
     else
-      res.status(404).send({
+      res.status(404).send({     //404 Not found
         message: `Post not found by id ${req.params.id}`
       })
   }
@@ -42,7 +42,7 @@ exports.create = async (req, res) => {
       res.send(post)
   }
   catch (err) {
-    res.status(422).send({
+    res.status(422).send({     //422-unprocessable Entity
       message: err.message
     })
   }
